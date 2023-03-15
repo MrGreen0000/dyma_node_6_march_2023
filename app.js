@@ -1,20 +1,19 @@
-// class MyEmitter {
-//     constructor() {
-//         this.events = {};
-//     }
-//     on(event, listener) {
-//         this.events[event] = this.events[event] || [];
-//         this.events[event].push(listener);
-//     }
-//     emit(event) {
-//         if (this.events[event]) {
-//             this.events[event].forEach(listener => listener());
-//         }
+class MyEmitter {
+  constructor() {
+    this.events = {};
+  }
+  on(event, listener) {
+    this.events[event] = this.events[event] || [];
+    this.events[event].push(listener);
+  }
+  emit(event) {
+    if (this.events[event]) {
+      this.events[event].forEach((listener) => listener());
+    }
+  }
+}
 
-//     }
-// }
-
-const MyEmitter = require("events");
+// const MyEmitter = require("events");
 const emitter = new MyEmitter();
 
 emitter.on("FILE_READ", (filename) => {
