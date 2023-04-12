@@ -1,27 +1,9 @@
-class MyEmitter {
-  constructor() {
-    this.events = {};
-  }
-  on(event, listener) {
-    this.events[event] = this.events[event] || [];
-    this.events[event].push(listener);
-  }
-  emit(event) {
-    if (this.events[event]) {
-      this.events[event].forEach((listener) => listener());
-    }
-  }
-}
+const fs = require("fs");
 
-// const MyEmitter = require("events");
-const emitter = new MyEmitter();
-
-emitter.on("FILE_READ", (filename) => {
-  console.log("file was read:", filename);
+fs.open("./fichiertest.txt", "a+", (err, fd) => {
+  if (err) throw err;
+  console.log(fd);
+  fs.close(fd, (err) => {
+    if (err) throw err;
+  });
 });
-
-emitter.on("FILE_READ", () => {
-  console.log("should cache file");
-});
-
-emitter.emit("FILE_READ", "filename");
