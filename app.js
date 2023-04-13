@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-fs.readFile("./fichiertest.txt", (err, data) => {
+fs.mkdir("./mondossier", (err) => {
   if (err) throw err;
-  console.log(data);
+  console.log("Le dossier à été créé !");
 });
