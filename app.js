@@ -1,6 +1,13 @@
-const fs = require("fs");
+const http = require("http");
 
-fs.mkdir("./mondossier", (err) => {
-  if (err) throw err;
-  console.log("Le dossier à été créé !");
+const server = http.createServer();
+
+server.on("request", (req, res) => {
+  res.writeHead(200, {
+    "content-type": "text/plain",
+  });
+
+  res.end("got a response");
 });
+
+server.listen(8080);
